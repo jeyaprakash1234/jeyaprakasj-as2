@@ -18,7 +18,7 @@ function foo(data1){
 `<div class="card" style="width: 18rem;">
 <img src="${data1[i].flags.png}" class="card-img-top" alt="...">
 <div class="card-body">
-  <p class="card-text">country:${data1[i].countryname}</p>
+  <p class="card-text">country:${data1[i].name.common}</p>
   <p class="card-text">capital::${data1[i].capital}</p>
 </div>
 </div>`
