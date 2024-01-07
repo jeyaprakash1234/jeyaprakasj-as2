@@ -1,23 +1,36 @@
+var f1 =fetch("https://restcountries.com/v3.1/all")
+f1.then((data)=>data.json()).then((data1)=>foo(data1));
+
+
+var container = document.createElement('div');
+container.className="container"
+
+var row =document.createElement('div');
+row.className ="row"
 
 
 
-const countdown = (num, callback) => {
-    if (num > 0) {
-      setTimeout(() => {
-        document.getElementById('countdown').innerText = num;
-        countdown(num - 1, callback);
-      }, 1000);
-    } else {
-      callback();
+function foo(data1){
+    for(var i=0;i<data1.length;i++){
+        var col = document.createElement('div');
+              col.className = "col-md=4"
+        col.innerHTML+=
+`<div class="card" style="width: 18rem;">
+<img src="${data1[i].flags.png}" class="card-img-top" alt="...">
+<div class="card-body">
+  <p class="card-text">country:${data1[i].countryname}</p>
+  <p class="card-text">capital::${data1[i].capital}</p>
+</div>
+</div>`
+
+
+
+row.append(col);
+container.append(row);
+        document.body.append(container);
+
     }
-  };
-  
 
-  const displayHappyNewYear = () => {
-    setTimeout(() => {
-      document.getElementById('countdown').innerText = 'Happy New Year ';
-    }, 1000);
-  };
-  
-  countdown(10, displayHappyNewYear);
-  
+
+
+}
